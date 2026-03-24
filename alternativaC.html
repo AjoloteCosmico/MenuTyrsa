@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Links Corporativos</title>
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0b1340;
+      --navy2:   #131d57;
+      --blue:    #1a2bab;
+      --accent:  #3d52ff;
+      --red:     #b11f1f;
+      --red2:    #d42b2b;
+      --gold:    #e8b84b;
+      --gold2:   #f5d07a;
+      --white:   #ffffff;
+      --offwhite:#f4f5fb;
+      --muted:   rgba(11,19,64,0.42);
+      --glass:   rgba(11,19,64,0.055);
+      --glass2:  rgba(11,19,64,0.10);
+      --radius:  18px;
+    }
+
+    html, body {
+      min-height: 100vh;
+      font-family: 'DM Sans', sans-serif;
+      background: #f4f5fb;
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* ── Animated mesh background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 15%,  rgba(61,82,255,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 80%,  rgba(177,31,31,.06) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 35% at 50% 105%, rgba(27,43,171,.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      animation: bgShift 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgShift {
+      0%   { filter: hue-rotate(0deg) brightness(1); }
+      100% { filter: hue-rotate(6deg) brightness(1.02); }
+    }
+
+    /* ── Grid noise overlay ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 180px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .6;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 0;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 48px 24px;
+      border-bottom: 1px solid rgba(11,19,64,.09);
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,.72);
+      animation: slideDown .6s ease both;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-ring {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--white);
+      border: 1.5px solid rgba(11,19,64,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 2px 12px rgba(11,19,64,.1);
+    }
+
+    .logo-ring::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--red) 0%, transparent 60%);
+      opacity: .2;
+    }
+
+    .logo-ring img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-info h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--navy);
+    }
+
+    .brand-info span {
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 400;
+      display: block;
+      margin-top: 1px;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: rgba(11,19,64,.4);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px #4ade80;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.75); }
+    }
+
+    /* ── Main grid area ── */
+    main {
+      padding: 36px 48px 40px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(11,19,64,.38);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: fadeUp .5s .2s ease both;
+      opacity: 0;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(11,19,64,.12), transparent);
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    /* First card spans 2 cols on large */
+    .link-card.featured {
+      grid-column: span 2;
+    }
+
+    /* ── Card ── */
+    .link-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 26px 24px 22px;
+      background: var(--white);
+      border: 1px solid rgba(11,19,64,.09);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--navy);
+      overflow: hidden;
+      cursor: pointer;
+      min-height: 158px;
+      box-shadow: 0 2px 12px rgba(11,19,64,.06);
+
+      /* staggered fade-in */
+      opacity: 0;
+      animation: cardIn .55s ease both;
+      transition:
+        transform .32s cubic-bezier(.34,1.48,.64,1),
+        box-shadow .32s ease,
+        border-color .32s ease;
+    }
+
+    .link-card:nth-child(1)  { animation-delay: .28s; }
+    .link-card:nth-child(2)  { animation-delay: .34s; }
+    .link-card:nth-child(3)  { animation-delay: .40s; }
+    .link-card:nth-child(4)  { animation-delay: .46s; }
+    .link-card:nth-child(5)  { animation-delay: .52s; }
+    .link-card:nth-child(6)  { animation-delay: .58s; }
+    .link-card:nth-child(7)  { animation-delay: .62s; }
+    .link-card:nth-child(8)  { animation-delay: .66s; }
+    .link-card:nth-child(9)  { animation-delay: .70s; }
+    .link-card:nth-child(10) { animation-delay: .74s; }
+    .link-card:nth-child(11) { animation-delay: .78s; }
+    .link-card:nth-child(12) { animation-delay: .82s; }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(22px) scale(.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Glow layer (hover) */
+    .link-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      background: radial-gradient(ellipse 80% 80% at 50% 0%, rgba(177,31,31,.07), transparent 70%);
+      opacity: 0;
+      transition: opacity .35s ease;
+      pointer-events: none;
+    }
+
+    /* Shimmer sweep */
+    .link-card::after {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -60%;
+      width: 60%;
+      height: 200%;
+      background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.08) 50%, transparent 70%);
+      transform: rotate(0deg);
+      opacity: 0;
+      transition: opacity .1s;
+      pointer-events: none;
+    }
+
+    .link-card:hover {
+      transform: translateY(-7px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(11,19,64,.14), 0 0 0 1px rgba(177,31,31,.35);
+      border-color: rgba(177,31,31,.4);
+    }
+
+    .link-card:hover::before { opacity: 1; }
+
+    .link-card:hover::after {
+      opacity: 1;
+      animation: shimmer .55s ease forwards;
+    }
+
+    @keyframes shimmer {
+      0%   { left: -60%; opacity: 1; }
+      100% { left: 120%; opacity: 0; }
+    }
+
+    .link-card:active {
+      transform: translateY(-3px) scale(.99);
+      box-shadow: 0 8px 30px rgba(0,0,0,.4);
+      transition-duration: .1s;
+    }
+
+    /* Featured card accent */
+    .link-card.featured {
+      background: linear-gradient(135deg, rgba(177,31,31,.06) 0%, rgba(255,255,255,1) 55%);
+      border-color: rgba(177,31,31,.18);
+      min-height: 172px;
+    }
+
+    .link-card.featured::before {
+      background: radial-gradient(ellipse 100% 100% at 10% 0%, rgba(177,31,31,.10), transparent 65%);
+    }
+
+    /* Under-construction style */
+    .link-card.wip {
+      opacity: 0; /* overridden by animation */
+    }
+    .link-card.wip .card-icon { opacity: .55; }
+    .link-card.wip .card-title { opacity: .6; }
+
+    /* ── Card internals ── */
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(11,19,64,.06);
+      border: 1px solid rgba(11,19,64,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--blue);
+      transition: background .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .link-card:hover .card-icon {
+      background: rgba(177,31,31,.1);
+      transform: scale(1.12) rotate(-4deg);
+    }
+
+    .card-badge {
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .badge-live {
+      background: rgba(74,222,128,.1);
+      color: #16a34a;
+      border: 1px solid rgba(74,222,128,.3);
+    }
+
+    .badge-wip {
+      background: rgba(177,31,31,.08);
+      color: var(--red);
+      border: 1px solid rgba(177,31,31,.2);
+    }
+
+    .card-body { flex: 1; }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .card-sub {
+      font-size: 11.5px;
+      color: rgba(11,19,64,.48);
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+
+    .arrow-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(11,19,64,.06);
+      border: 1px solid rgba(11,19,64,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        background .28s ease,
+        transform .28s cubic-bezier(.34,1.56,.64,1),
+        border-color .28s ease;
+    }
+
+    .link-card:hover .arrow-btn {
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateX(4px) rotate(-45deg);
+    }
+
+    .arrow-btn svg {
+      width: 13px;
+      height: 13px;
+      color: rgba(11,19,64,.45);
+      transition: color .28s ease;
+    }
+
+    .link-card:hover .arrow-btn svg { color: var(--white); }
+
+    /* ── Footer ── */
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 48px;
+      border-top: 1px solid rgba(11,19,64,.08);
+      font-size: 10.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(11,19,64,.25);
+      gap: 16px;
+      animation: fadeUp .6s 1s ease both;
+      opacity: 0;
+    }
+
+    footer::before, footer::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(11,19,64,.1));
+    }
+    footer::after { background: linear-gradient(to left, transparent, rgba(11,19,64,.1)); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+      .link-card.featured { grid-column: span 2; }
+      header { padding: 22px 32px; }
+      main   { padding: 28px 32px 36px; }
+    }
+
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .link-card.featured { grid-column: span 2; }
+      header { padding: 18px 20px; }
+      main   { padding: 22px 20px 32px; }
+      .header-meta { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .link-card { min-height: 140px; padding: 18px 16px 16px; }
+      .brand-info h1 { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-brand">
+      <div class="logo-ring">
+        <img src="logo.png" alt="Logo" onerror="this.style.display='none'"/>
+      </div>
+      <div class="brand-info">
+        <h1>TyrsaWes</h1>
+        <span>Fabricación · Integración · Instalación</span>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="status-dot"></div>
+      <span>Sistemas activos</span>
+    </div>
+  </header>
+
+  <!-- MAIN GRID -->
+  <main>
+    <p class="section-label">Portal Corporativo &mdash; Accesos</p>
+
+    <nav class="grid">
+
+      <!-- 1. CXC REAL — featured -->
+      <a class="link-card featured" href="https://tyrsawes-admin.com/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-bar-chart"></i></div>
+          <span class="card-badge badge-live">Activo</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Cuentas × Cobrar</div>
+          <div class="card-sub">Administración de pedidos, cobros y facturas. Software administrativo en uso.</div>
+        </div>
+        <div class="card-footer">
+          <div class="arrow-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2. CXP -->
+      <a class="link-card" href="#" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-credit-card"></i></div>
+          <span class="card-badge badge-wip">Beta</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Cuentas × Pagar</div>
+          <div class="card-sub">Órdenes internas, pagos y facturas. En construcción.</div>
+        </div>
+        <div class="card-footer">
+          <div class="arrow-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3. COTIZADOR -->
+      <a class="link-card" href="https://tyrsa-cotizador.click/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-calculator"></i></div>
+          <span class="card-badge badge-live">Activo</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Cotizador</div>
+          <div class="card-sub">Piezas, estanterías, viáticos, instalaciones y reportes.</div>
+        </div>
+        <div class="card-footer">
+          <div class="arrow-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- 4. HISTÓRICO -->
+      <a class="link-card" href="https://tyrsa-apps.com/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-archive"></i></div>
+          <span class="card-badge badge-live">Activo</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Histórico CxC</div>
+          <div class="card-sub">Datos congelados anteriores al 01/01/2026.</div>
+        </div>
+        <div class="card-footer">
+          <div class="arrow-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- 5-12. WIP CARDS -->
+      <a class="link-card wip" href="#" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-cogs"></i></div>
+          <span class="card-badge badge-wip">Pronto</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sitio 1</div>
+          <div class="card-sub">En construcción.</div>
+        </div>
+        <div class="card-footer"><div class="arrow-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div></div>
+      </a>
+
+      <a class="link-card wip" href="#" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-cogs"></i></div>
+          <span class="card-badge badge-wip">Pronto</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sitio 2</div>
+          <div class="card-sub">En construcción.</div>
+        </div>
+        <div class="card-footer"><div class="arrow-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div></div>
+      </a>
+
+      <a class="link-card wip" href="#" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-cogs"></i></div>
+          <span class="card-badge badge-wip">Pronto</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sitio 3</div>
+          <div class="card-sub">En construcción.</div>
+        </div>
+        <div class="card-footer"><div class="arrow-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div></div>
+      </a>
+
+      <a class="link-card wip" href="#" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-cogs"></i></div>
+          <span class="card-badge badge-wip">Pronto</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sitio 4</div>
+          <div class="card-sub">En construcción.</div>
+        </div>
+        <div class="card-footer"><div class="arrow-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div></div>
+      </a>
+
+      <a class="link-card wip" href="#" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-cogs"></i></div>
+          <span class="card-badge badge-wip">Pronto</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sitio 5</div>
+          <div class="card-sub">En construcción.</div>
+        </div>
+        <div class="card-footer"><div class="arrow-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div></div>
+      </a>
+
+      <a class="link-card wip" href="#" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-cogs"></i></div>
+          <span class="card-badge badge-wip">Pronto</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sitio 6</div>
+          <div class="card-sub">En construcción.</div>
+        </div>
+        <div class="card-footer"><div class="arrow-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div></div>
+      </a>
+
+      <a class="link-card wip" href="#" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-cogs"></i></div>
+          <span class="card-badge badge-wip">Pronto</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sitio 7</div>
+          <div class="card-sub">En construcción.</div>
+        </div>
+        <div class="card-footer"><div class="arrow-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div></div>
+      </a>
+
+      <a class="link-card wip" href="#" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon"><i class="fa fa-cogs"></i></div>
+          <span class="card-badge badge-wip">Pronto</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sitio 8</div>
+          <div class="card-sub">En construcción.</div>
+        </div>
+        <div class="card-footer"><div class="arrow-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div></div>
+      </a>
+
+    </nav>
+  </main>
+
+  <footer>© 2026 Nombre de Empresa</footer>
+
+</div>
+
+<script>
+  /* Magnetic tilt on cards */
+  document.querySelectorAll('.link-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const cx = rect.left + rect.width  / 2;
+      const cy = rect.top  + rect.height / 2;
+      const dx = (e.clientX - cx) / (rect.width  / 2);
+      const dy = (e.clientY - cy) / (rect.height / 2);
+      card.style.transform = `translateY(-7px) scale(1.02) rotateX(${-dy * 5}deg) rotateY(${dx * 6}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+
+    card.addEventListener('mousedown', () => {
+      card.style.transform = 'scale(.97)';
+      card.style.transition = 'transform .08s ease';
+    });
+
+    card.addEventListener('mouseup', () => {
+      card.style.transition = '';
+    });
+  });
+</script>
+</body>
+</html>

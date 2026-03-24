@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Links Corporativos · TyrsaWes</title>
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #122594;
+      --blue-mid:   #1a35c2;
+      --blue-light: #2348e8;
+      --red:        #b11f1f;
+      --red-bright: #d42525;
+      --white:      #ffffff;
+      --off-white:  #f5f6fb;
+      --mist:       #eef0f9;
+      --slate:      #c8cde8;
+      --ink:        #0d1a6e;
+      --text-muted: #6b78b4;
+      --card-bg:    rgba(255,255,255,0.82);
+      --radius-lg:  22px;
+      --radius-sm:  12px;
+      --shadow-card: 0 4px 24px rgba(18,37,148,.07), 0 1px 4px rgba(18,37,148,.05);
+      --shadow-hover: 0 16px 48px rgba(18,37,148,.16), 0 4px 12px rgba(18,37,148,.08);
+    }
+
+    html, body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ───── BACKGROUND ───── */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* Grid lines */
+    .bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(18,37,148,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18,37,148,.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    /* Blue glow top left */
+    .bg-glow-1 {
+      position: absolute;
+      width: 700px; height: 700px;
+      top: -200px; left: -200px;
+      background: radial-gradient(circle, rgba(35,72,232,.14) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+
+    /* Red accent glow bottom right */
+    .bg-glow-2 {
+      position: absolute;
+      width: 500px; height: 500px;
+      bottom: -150px; right: -100px;
+      background: radial-gradient(circle, rgba(177,31,31,.09) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+
+    /* Diagonal stripe accent */
+    .bg-stripe {
+      position: absolute;
+      top: 0; right: 0;
+      width: 260px;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 60%, rgba(18,37,148,.025) 60%);
+    }
+
+    /* ───── PAGE LAYOUT ───── */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr min(480px, 92vw) 1fr;
+      grid-template-rows: auto 1fr auto;
+      padding: 56px 0 48px;
+      gap: 0;
+    }
+
+    .page > * {
+      grid-column: 2;
+    }
+
+    /* ───── HEADER BADGE ───── */
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 40px;
+      animation: fadeUp .5s ease both;
+    }
+
+    .badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    .badge-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.8); }
+    }
+
+    /* ───── HERO ───── */
+    .hero {
+      margin-bottom: 44px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      animation: fadeUp .55s .05s ease both;
+      opacity: 0;
+    }
+
+    .logo-ring {
+      position: relative;
+      width: 72px; height: 72px;
+      flex-shrink: 0;
+    }
+
+    /* Spinning ring */
+    .logo-ring::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(var(--blue) 0%, var(--red) 40%, var(--blue-light) 70%, var(--blue) 100%);
+      animation: spin 8s linear infinite;
+    }
+
+    .logo-ring::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 50%;
+      background: var(--off-white);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .logo-inner {
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: var(--white);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(18,37,148,.12);
+      overflow: hidden;
+    }
+
+    .logo-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .brand-info {}
+
+    .brand-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+
+    .brand-name span {
+      color: var(--red);
+    }
+
+    .brand-tagline {
+      margin-top: 6px;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Horizontal rule with accent */
+    .hero-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: fadeUp .55s .1s ease both;
+      opacity: 0;
+    }
+
+    .rule-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--slate) 100%);
+      opacity: .3;
+    }
+
+    .rule-diamond {
+      width: 6px; height: 6px;
+      background: var(--red);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .hero-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* ───── SECTION LABEL ───── */
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      opacity: .7;
+      padding-left: 2px;
+    }
+
+    /* ───── LINKS ───── */
+    .links-group {
+      margin-bottom: 10px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    /* Active cards */
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      text-decoration: none;
+      color: var(--ink);
+      border: 1.5px solid rgba(18,37,148,.07);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow: hidden;
+      position: relative;
+      transition:
+        transform .3s cubic-bezier(.34,1.56,.64,1),
+        box-shadow .3s ease,
+        border-color .3s ease;
+      cursor: pointer;
+    }
+
+    /* Left color accent stripe */
+    .link-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--blue);
+      border-radius: 4px 0 0 4px;
+      transition: background .3s ease;
+    }
+
+    .link-card.red::before  { background: var(--red); }
+    .link-card.blue::before { background: var(--blue-light); }
+
+    .link-card:hover {
+      transform: translateY(-4px) scale(1.005);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(18,37,148,.18);
+    }
+
+    .link-card:active {
+      transform: translateY(-2px) scale(1.003);
+    }
+
+    /* Shimmer on hover */
+    .link-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.45) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform .5s ease;
+      pointer-events: none;
+    }
+
+    .link-card:hover::after {
+      transform: translateX(100%);
+    }
+
+    .card-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 20px 18px 24px;
+      width: 100%;
+    }
+
+    .card-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .card-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 17px;
+      position: relative;
+      transition: transform .3s ease;
+    }
+
+    .card-icon.blue-icon {
+      background: linear-gradient(135deg, #e8edff 0%, #d0d9ff 100%);
+      color: var(--blue);
+    }
+
+    .card-icon.red-icon {
+      background: linear-gradient(135deg, #ffeaea 0%, #ffd5d5 100%);
+      color: var(--red);
+    }
+
+    .card-icon.gray-icon {
+      background: linear-gradient(135deg, #eff1f8 0%, #e4e7f3 100%);
+      color: var(--text-muted);
+    }
+
+    .link-card:hover .card-icon {
+      transform: rotate(-6deg) scale(1.08);
+    }
+
+    .card-text {}
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      letter-spacing: -.01em;
+    }
+
+    .card-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 400;
+      line-height: 1.4;
+      max-width: 280px;
+    }
+
+    .card-arrow {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--mist);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .3s ease, transform .3s ease;
+      border: 1.5px solid rgba(18,37,148,.08);
+    }
+
+    .link-card:hover .card-arrow {
+      background: var(--blue);
+      transform: translateX(3px);
+    }
+
+    .card-arrow svg {
+      width: 13px; height: 13px;
+      stroke: var(--text-muted);
+      transition: stroke .3s ease;
+    }
+
+    .link-card:hover .card-arrow svg {
+      stroke: var(--white);
+    }
+
+    /* ── Dimmed / "under construction" cards ── */
+    .link-card.dim {
+      opacity: .52;
+      filter: grayscale(.3);
+      pointer-events: none;
+    }
+
+    /* ── Construction badge ── */
+    .wip-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(18,37,148,.06);
+      border: 1px solid rgba(18,37,148,.10);
+      border-radius: 20px;
+      padding: 2px 9px;
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .wip-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--red);
+      opacity: .7;
+    }
+
+    /* ── Collapsed WIP section ── */
+    .wip-section {
+      margin-top: 0;
+    }
+
+    .wip-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .wip-toggle-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: .6;
+    }
+
+    .wip-toggle-line {
+      flex: 1;
+      height: 1px;
+      background: var(--slate);
+      opacity: .4;
+    }
+
+    .wip-toggle-count {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--mist);
+      border: 1px solid var(--slate);
+      border-radius: 20px;
+      padding: 1px 8px;
+    }
+
+    .wip-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .5s cubic-bezier(.4,0,.2,1), opacity .4s ease;
+      opacity: 0;
+    }
+
+    .wip-grid.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    .wip-mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 14px;
+      background: var(--card-bg);
+      border-radius: var(--radius-sm);
+      border: 1.5px dashed rgba(18,37,148,.10);
+      backdrop-filter: blur(8px);
+    }
+
+    .wip-mini-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--mist);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--slate);
+      flex-shrink: 0;
+    }
+
+    .wip-mini-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+      opacity: .4;
+    }
+
+    .wip-mini-sub {
+      font-size: 9.5px;
+      color: var(--text-muted);
+      opacity: .6;
+      margin-top: 2px;
+    }
+
+    /* ───── FOOTER ───── */
+    .footer {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      animation: fadeUp .6s .8s ease both;
+      opacity: 0;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+
+    .footer-line {
+      flex: 1;
+      height: 1px;
+      background: var(--slate);
+      opacity: .35;
+    }
+
+    .footer-year {
+      font-size: 10px;
+      letter-spacing: .1em;
+      color: var(--slate);
+    }
+
+    /* ───── ANIMATIONS ───── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .link-card:nth-child(1) { animation: fadeUp .5s .20s ease both; opacity:0; }
+    .link-card:nth-child(2) { animation: fadeUp .5s .28s ease both; opacity:0; }
+    .link-card:nth-child(3) { animation: fadeUp .5s .36s ease both; opacity:0; }
+    .link-card:nth-child(4) { animation: fadeUp .5s .44s ease both; opacity:0; }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .card-sub { display: none; }
+      .wip-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg">
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+    <div class="bg-stripe"></div>
+  </div>
+
+  <main class="page">
+
+    <!-- HEADER BADGE -->
+    <div class="header-badge">
+      <div class="badge-dot"></div>
+      <span class="badge-text">Portal Corporativo · Acceso Interno</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="logo-row">
+        <div class="logo-ring">
+          <div class="logo-inner">
+            <img src="logo.png" alt="TyrsaWes" onerror="this.style.display='none'"/>
+          </div>
+        </div>
+        <div class="brand-info">
+          <h1 class="brand-name">Tyrsa<span>Wes</span></h1>
+          <p class="brand-tagline">Fabricación · Integración · Instalación</p>
+        </div>
+      </div>
+
+      <div class="hero-rule">
+        <div class="rule-line"></div>
+        <div class="rule-diamond"></div>
+        <span class="hero-label">Sistemas internos</span>
+        <div class="rule-diamond"></div>
+        <div class="rule-line" style="background: linear-gradient(90deg, var(--slate), var(--red)); opacity:.25;"></div>
+      </div>
+    </div>
+
+    <!-- ACTIVE LINKS -->
+    <div class="links-group">
+      <p class="section-label">Módulos activos</p>
+      <nav class="links">
+
+        <!-- CXC -->
+        <a class="link-card blue" href="https://tyrsawes-admin.com/" target="_blank" rel="noopener">
+          <div class="card-body">
+            <div class="card-left">
+              <div class="card-icon blue-icon">
+                <i class="fa fa-bar-chart"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-title">Cuentas por Cobrar</div>
+                <div class="card-sub">TyrsaWes Administración de pedidos, cobros, facturas y cartera activa</div>
+              </div>
+            </div>
+            <div class="card-arrow">
+              <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- CXP -->
+        <a class="link-card red" href="#" target="_blank" rel="noopener">
+          <div class="card-body">
+            <div class="card-left">
+              <div class="card-icon red-icon">
+                <i class="fa fa-credit-card"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-title">Cuentas por Pagar</div>
+                <div class="card-sub">Órdenes internas, pagos, facturas y flujo de egresos</div>
+              </div>
+            </div>
+            <div class="card-arrow">
+              <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- COTIZADOR -->
+        <a class="link-card blue" href="https://tyrsa-cotizador.click/" target="_blank" rel="noopener">
+          <div class="card-body">
+            <div class="card-left">
+              <div class="card-icon blue-icon">
+                <i class="fa fa-calculator"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-title">Cotizador</div>
+                <div class="card-sub">Piezas, estanterías, viáticos, instalaciones, reportes y redacción</div>
+              </div>
+            </div>
+            <div class="card-arrow">
+              <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- HISTÓRICO -->
+        <a class="link-card" href="https://tyrsa-apps.com/" target="_blank" rel="noopener">
+          <div class="card-body">
+            <div class="card-left">
+              <div class="card-icon gray-icon">
+                <i class="fa fa-archive"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-title">Histórico CxC</div>
+                <div class="card-sub">Archivo congelado · Datos anteriores al 01/01/2026</div>
+              </div>
+            </div>
+            <div class="card-arrow">
+              <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+      </nav>
+    </div>
+
+    <!-- WIP SECTION — collapsed by default -->
+    <div class="wip-section">
+      <div class="wip-toggle" onclick="toggleWip()" role="button" aria-expanded="false" id="wipToggle">
+        <span class="wip-toggle-label">En construcción</span>
+        <div class="wip-toggle-line"></div>
+        <span class="wip-toggle-count">9 sitios</span>
+      </div>
+
+      <div class="wip-grid" id="wipGrid">
+        <!-- 9 placeholder cards -->
+        <script>
+          const wips = ['Sitio 1','Sitio 2','Sitio 3','Sitio 4','Sitio 5','Sitio 6','Sitio 7','Sitio 8','Sitio 9'];
+          document.write(wips.map(s => `
+            <div class="wip-mini">
+              <div class="wip-mini-icon"><i class="fa fa-cogs"></i></div>
+              <div>
+                <div class="wip-mini-title">${s}</div>
+                <div class="wip-mini-sub">En construcción</div>
+              </div>
+            </div>
+          `).join(''));
+        </script>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <span class="footer-brand">TyrsaWes</span>
+      <div class="footer-line"></div>
+      <span class="footer-year">© 2026</span>
+    </div>
+
+  </main>
+
+  <script>
+    function toggleWip() {
+      const grid   = document.getElementById('wipGrid');
+      const toggle = document.getElementById('wipToggle');
+      const isOpen = grid.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    }
+  </script>
+
+</body>
+</html>

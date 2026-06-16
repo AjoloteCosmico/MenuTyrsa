@@ -133,6 +133,7 @@
     /* ───── HERO ───── */
     .hero {
       margin-bottom: 44px;
+      justify-items: center;
     }
 
     .logo-row {
@@ -146,35 +147,19 @@
 
     .logo-ring {
       position: relative;
-      width: 72px; height: 72px;
+      width: 100px; height: 100px;
       flex-shrink: 0;
+      background: none;
     }
 
-    /* Spinning ring */
-    .logo-ring::before {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background: conic-gradient(var(--blue) 0%, var(--red) 40%, var(--blue-light) 70%, var(--blue) 100%);
-      animation: spin 8s linear infinite;
-    }
-
+    .logo-ring::before,
     .logo-ring::after {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 50%;
-      background: var(--off-white);
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+      display: none;
     }
 
     .logo-inner {
       position: absolute;
-      inset: 4px;
+      inset: 0;
       border-radius: 50%;
       background: var(--white);
       z-index: 1;
@@ -186,10 +171,10 @@
     }
 
     .logo-inner img {
-      width: 100%;
-      height: 100%;
+      width: 90%;
+      height: 90%;
       object-fit: contain;
-      padding: 10px;
+      padding: 0;
     }
 
     .brand-info {}
@@ -621,16 +606,12 @@
 
     <!-- HERO -->
     <div class="hero">
-      <div class="logo-row">
-        <div class="logo-ring">
-          <div class="logo-inner">
-            <img src="logo.png" alt="TyrsaWes" onerror="this.style.display='none'"/>
-          </div>
-        </div>
-        <div class="brand-info">
-          <h1 class="brand-name">Tyrsa<span>Wes</span></h1>
-          <p class="brand-tagline">Fabricación · Integración · Instalación</p>
-        </div>
+      
+         <center>
+  <img src="logo_act.png" alt="TyrsaWes" onerror="this.style.display='none'" style="width:70%; align-self: center;"/>
+          
+         </center>
+          
       </div>
 
       <div class="hero-rule">

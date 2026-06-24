@@ -438,17 +438,17 @@
     .wip-badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
       background: rgba(18,37,148,.06);
       border: 1px solid rgba(18,37,148,.10);
       border-radius: 20px;
-      padding: 2px 9px;
-      font-size: 9.5px;
-      letter-spacing: .12em;
+      padding: 4px 10px;
+      font-size: 10px;
+      letter-spacing: .10em;
       text-transform: uppercase;
       color: var(--text-muted);
-      font-weight: 500;
-      margin-top: 4px;
+      font-weight: 600;
+      margin-top: 6px;
     }
 
     .wip-dot {
@@ -456,6 +456,20 @@
       border-radius: 50%;
       background: var(--red);
       opacity: .7;
+    }
+
+    /* Cute variant for WIP badges */
+    .wip-badge.cute {
+      background: linear-gradient(90deg, #fffaf7 0%, #fff6ff 100%);
+      border: 1px solid rgba(218,112,214,.12);
+      color: #b84b6b;
+      box-shadow: 0 6px 18px rgba(183,75,140,.06);
+      font-weight: 700;
+    }
+
+    .wip-badge.cute .wip-dot {
+      width: 8px; height: 8px; background: linear-gradient(90deg, #ff9bb3, #ffd6e8);
+      border-radius: 50%; box-shadow: 0 2px 6px rgba(201,33,91,.12);
     }
 
     /* ── Collapsed WIP section ── */
@@ -730,7 +744,7 @@
 
 
         <!-- HISTÓRICO -->
-        <a class="link-card" href="#" target="_blank" rel="noopener">
+        <a class="link-card dim" href="#" aria-disabled="true" rel="noopener">
           <div class="card-body">
             <div class="card-left">
               <div class="card-icon gray-icon">
@@ -738,6 +752,7 @@
               </div>
               <div class="card-text">
                 <div class="card-title">Módulo 5</div>
+                <div class="wip-badge cute" aria-hidden="true"><span class="wip-dot"></span> En construcción 🚧</div>
                 <!-- <div class="card-sub">Archivo congelado · Datos anteriores al 01/01/2026</div> -->
               </div>
             </div>
@@ -749,7 +764,7 @@
           </div>
         </a>
 
-         <a class="link-card" href="#" target="_blank" rel="noopener">
+         <a class="link-card dim" href="#" aria-disabled="true" rel="noopener">
           <div class="card-body">
             <div class="card-left">
               <div class="card-icon gray-icon">
@@ -757,6 +772,7 @@
               </div>
               <div class="card-text">
                 <div class="card-title">Módulo 6</div>
+                <div class="wip-badge cute" aria-hidden="true"><span class="wip-dot"></span> En construcción 🚧</div>
                 <!-- <div class="card-sub">Archivo congelado · Datos anteriores al 01/01/2026</div> -->
               </div>
             </div>
@@ -768,7 +784,7 @@
           </div>
         </a>
 
-         <a class="link-card" href="#" arget="_blank" rel="noopener">
+         <a class="link-card dim" href="#" aria-disabled="true" rel="noopener">
           <div class="card-body">
             <div class="card-left">
               <div class="card-icon gray-icon">
@@ -776,6 +792,7 @@
               </div>
               <div class="card-text">
                 <div class="card-title">Módulo 7</div>
+                <div class="wip-badge cute" aria-hidden="true"><span class="wip-dot"></span> En construcción 🚧</div>
                 <!-- <div class="card-sub">Archivo congelado · Datos anteriores al 01/01/2026</div> -->
               </div>
             </div>
@@ -787,7 +804,7 @@
           </div>
         </a>
 
-         <a class="link-card" href="#" target="_blank" rel="noopener">
+         <a class="link-card dim" href="#" aria-disabled="true" rel="noopener">
           <div class="card-body">
             <div class="card-left">
               <div class="card-icon gray-icon">
@@ -795,6 +812,7 @@
               </div>
               <div class="card-text">
                 <div class="card-title">Módulo 8</div>
+                <div class="wip-badge cute" aria-hidden="true"><span class="wip-dot"></span> En construcción 🚧</div>
                 <!-- <div class="card-sub">Archivo congelado · Datos anteriores al 01/01/2026</div> -->
               </div>
             </div>
@@ -807,7 +825,7 @@
         </a>
 
 
-         <a class="link-card" href="https://tyrsa-apps.com/" target="_blank" rel="noopener">
+         <a class="link-card dim" href="#" aria-disabled="true" rel="noopener">
           <div class="card-body">
             <div class="card-left">
               <div class="card-icon gray-icon">
@@ -815,6 +833,7 @@
               </div>
               <div class="card-text">
                 <div class="card-title">Módulo 9</div>
+                <div class="wip-badge cute" aria-hidden="true"><span class="wip-dot"></span> En construcción 🚧</div>
                 <!-- <div class="card-sub">Archivo congelado · Datos anteriores al 01/01/2026</div> -->
               </div>
             </div>
